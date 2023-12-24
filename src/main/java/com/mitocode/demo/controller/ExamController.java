@@ -60,6 +60,7 @@ public class ExamController {
 
     @PutMapping("/{id}")
     public ResponseEntity<ExamDTO> update(@Valid @RequestBody ExamDTO dto,@PathVariable("id") Integer id) throws Exception{
+        dto.setIdExam(id);
         Exam obj =  service.update(convertToEntity(dto), id);
 
         return new ResponseEntity<>(convertToDto(obj),HttpStatus.OK);

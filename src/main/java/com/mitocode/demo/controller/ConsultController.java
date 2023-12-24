@@ -64,6 +64,7 @@ public class ConsultController {
 
     @PutMapping("/{id}")
     public ResponseEntity<ConsultDTO> update(@Valid @RequestBody ConsultDTO dto,@PathVariable("id") Integer id) throws Exception{
+        dto.setIdConsult(id);
         Consult obj =  service.update(convertToEntity(dto), id);
 
         return new ResponseEntity<>(convertToDto(obj),HttpStatus.OK);
